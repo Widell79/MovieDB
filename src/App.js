@@ -1,7 +1,7 @@
+import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-
-import MainContainer from "./components/mainContainer";
 import "./app.css";
+import MainContainer from "./components/mainContainer";
 
 function App() {
   return (
