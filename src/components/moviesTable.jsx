@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "font-awesome/css/font-awesome.min.css";
 
 const MoviesTable = ({ movies, onDelete, onSort, sortOrder, column }) => {
@@ -40,7 +41,9 @@ const MoviesTable = ({ movies, onDelete, onSort, sortOrder, column }) => {
         {movies.map((movie) => {
           return (
             <tr key={movie._id}>
-              <td>{movie.title}</td>
+              <td>
+                <Link to={`/movies/${movie._id}`}>{movie.title}</Link>
+              </td>
               <td>{movie.genre.name}</td>
               <td>{movie.numberInStock}</td>
               <td>{movie.dailyRentalRate}</td>
