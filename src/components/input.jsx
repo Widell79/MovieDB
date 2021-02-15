@@ -2,7 +2,7 @@ import React from "react";
 
 const Input = ({ type, name, label, value, error, onChange }) => {
   return (
-    <div className="form-group col-md-6">
+    <div className="form-group">
       <label htmlFor={name}>{label}</label>
       <input
         autoFocus
