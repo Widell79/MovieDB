@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import _ from "lodash";
+import { Link } from "react-router-dom";
 import MoviesTable from "./moviesTable";
 import { getMovies } from "../services/fakeMovieService";
 import { getGenres } from "../services/fakeGenreService";
 import Pagination from "./pagination";
 import { paginate } from "../utils/paginate";
 import ListGroup from "./listGroup";
-import _ from "lodash";
 
 class Movies extends Component {
   state = {
@@ -73,6 +74,10 @@ class Movies extends Component {
             selectedItem={this.state.selectedGenre}
             onItemSelect={this.genreSelectHandler}
           />
+          <br />
+          <Link to="/movies/new">
+            <button className="btn btn-primary">New Movie</button>
+          </Link>
         </div>
         <div className="col">
           <h3>{`Showing ${filtered.length} movies in the database.`}</h3>
