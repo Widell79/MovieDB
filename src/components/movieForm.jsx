@@ -65,9 +65,9 @@ class MovieForm extends Form {
     };
   }
 
-  doSubmit = () => {
+  doSubmit = async () => {
     //Call the server to save Movie
-    saveMovie(this.state.data);
+    await saveMovie(this.state.data);
     //Redirect user back to /movies after submiting
     this.props.history.push("/movies");
   };
