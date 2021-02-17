@@ -28,7 +28,7 @@ class Movies extends Component {
   //   this.setState({ movies: getMovies(), genres: genres });
   // }
 
-  //Real db fetched data
+  //Real db fetched data. {data} from axios result
   async componentDidMount() {
     const { data } = await getGenres();
     const genres = [{ _id: "", name: "All Genres" }, ...data];
