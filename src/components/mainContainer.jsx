@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Movies from "./movies";
 import Customers from "./customers";
 import Rentals from "./rentals";
@@ -13,6 +14,7 @@ class MainContainer extends Component {
   render() {
     return (
       <>
+        <ToastContainer />
         <NavBar />
         <main className="container">
           <Switch>
