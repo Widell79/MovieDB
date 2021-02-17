@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import "./App.css";
+import "./app.css";
 import MainContainer from "./components/mainContainer";
 
 function App() {
