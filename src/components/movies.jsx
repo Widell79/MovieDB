@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import _ from "lodash";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import MoviesTable from "./moviesTable";
 import SearchBox from "./searchBox";
-import { getMovies } from "../services/fakeMovieService";
-import { getGenres } from "../services/fakeGenreService";
+//import { getMovies, deleteMovie } from "../services/fakeMovieService";
+import { getMovies, deleteMovie } from "../services/movieService";
+//import { getGenres } from "../services/fakeGenreService";
+import { getGenres } from "../services/genreService";
 import Pagination from "./pagination";
 import { paginate } from "../utils/paginate";
 import ListGroup from "./listGroup";
@@ -19,17 +22,34 @@ class Movies extends Component {
     selectedGenre: null,
     sortColumn: { path: "title", order: "" },
   };
+  //Local fake db data
+  // componentDidMount() {
+  //   const genres = [{ _id: "", name: "All Genres" }, ...getGenres()];
+  //   this.setState({ movies: getMovies(), genres: genres });
+  // }
 
-  componentDidMount() {
-    const genres = [{ _id: "", name: "All Genres" }, ...getGenres()];
-    this.setState({ movies: getMovies(), genres: genres });
+  //Real db fetched data
+  async componentDidMount() {
+    const { data } = await getGenres();
+    const genres = [{ _id: "", name: "All Genres" }, ...data];
+
+    const { data: movies } = await getMovies();
+    this.setState({ movies, genres: genres });
   }
 
-  deleteHandler = (movie) => {
-    const filtered_movies = this.state.movies.filter(
-      (mov) => mov._id !== movie._id
-    );
-    this.setState({ movies: filtered_movies });
+  deleteHandler = async (movie) => {
+    const originalMovies = this.state.movies;
+    const movies = originalMovies.filter((mov) => mov._id !== movie._id);
+    this.setState({ movies });
+
+    try {
+      await deleteMovie(movie._id);
+    } catch (exept) {
+      if (exept.response && exept.response.status === 404)
+        toast.error("This movie has already been deleted.");
+
+      this.setState({ movies: originalMovies });
+    }
   };
 
   pageHandler = (page) => {

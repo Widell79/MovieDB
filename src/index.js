@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import logger from "./services/logServices";
+import logger from "./services/logService";
 
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
