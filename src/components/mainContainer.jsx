@@ -31,7 +31,13 @@ class MainContainer extends Component {
             <Route path="/login" component={LoginForm}></Route>
             <Route path="/logout" component={Logout}></Route>
             <Route path="/register" component={RegisterForm}></Route>
-            <Route path="/movies/:id" component={MovieForm}></Route>
+            <Route
+              path="/movies/:id"
+              render={(props) => {
+                if (!this.state.user) return <Redirect to="/login" />;
+                return <MovieForm {...props} />;
+              }}
+            ></Route>
             <Route path="/movies/new" component={MovieForm}></Route>
             <Route
               path="/movies"
