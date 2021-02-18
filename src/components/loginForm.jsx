@@ -21,9 +21,7 @@ class LoginForm extends Form {
       //get the response property data
       const { data } = this.state;
       //get the json web token, jwy
-      const { data: jwt } = await login(data.username, data.password);
-      //access the localStorage in the browser
-      localStorage.setItem("token", jwt);
+      await login(data.username, data.password);
       window.location = "/";
     } catch (exept) {
       if (exept.response && exept.response.status === 400) {
