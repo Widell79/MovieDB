@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "font-awesome/css/font-awesome.min.css";
 
-const MoviesTable = ({ movies, onDelete, onSort, sortOrder, column }) => {
+const MoviesTable = ({ movies, onDelete, onSort, sortOrder, column, user }) => {
   const renderSortIcon = (thColumn) => {
     //Only show icon on active column
     if (thColumn !== column) return null;
@@ -42,18 +42,24 @@ const MoviesTable = ({ movies, onDelete, onSort, sortOrder, column }) => {
           return (
             <tr key={movie._id}>
               <td>
-                <Link to={`/movies/${movie._id}`}>{movie.title}</Link>
+                {user ? (
+                  <Link to={`/movies/${movie._id}`}>{movie.title}</Link>
+                ) : (
+                  movie.title
+                )}
               </td>
               <td>{movie.genre.name}</td>
               <td>{movie.numberInStock}</td>
               <td>{movie.dailyRentalRate}</td>
               <td>
-                <button
-                  onClick={() => onDelete(movie)}
-                  className="btn btn-danger btn-sm"
-                >
-                  Delete
-                </button>
+                {user && (
+                  <button
+                    onClick={() => onDelete(movie)}
+                    className="btn btn-danger btn-sm"
+                  >
+                    Delete
+                  </button>
+                )}
               </td>
             </tr>
           );

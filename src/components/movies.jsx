@@ -104,6 +104,7 @@ class Movies extends Component {
 
   render() {
     const { filtered, data: movies } = this.getPagedData();
+    const { user } = this.props;
 
     if (this.state.movies.length === 0) {
       return <h3>There are no movies in the database.</h3>;
@@ -118,9 +119,11 @@ class Movies extends Component {
             onItemSelect={this.genreSelectHandler}
           />
           <br />
-          <Link to="/movies/new">
-            <button className="btn btn-primary">New Movie</button>
-          </Link>
+          {user && (
+            <Link to="/movies/new" className="btn btn-primary">
+              New Movie
+            </Link>
+          )}
         </div>
         <div className="col">
           <h3>{`Showing ${filtered.length} movies in the database.`}</h3>
@@ -135,6 +138,7 @@ class Movies extends Component {
             onSort={this.sortHandler}
             sortOrder={this.state.sortColumn.order}
             column={this.state.sortColumn.path}
+            user={user}
           />
           <Pagination
             itemsCount={filtered.length}

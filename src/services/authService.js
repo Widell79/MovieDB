@@ -4,6 +4,8 @@ import jwtDecode from "jwt-decode";
 
 const apiEndpoint = config.apiURL + "/auth";
 
+http.setJwt(getJwt());
+
 export async function login(email, password) {
   const { data: jwt } = await http.post(apiEndpoint, { email, password });
   //access the localStorage in the browser
@@ -25,4 +27,8 @@ export function getCurrentUser() {
   } catch (exept) {
     return null;
   }
+}
+
+export function getJwt() {
+  return localStorage.getItem("token");
 }

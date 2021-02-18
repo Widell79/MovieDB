@@ -33,7 +33,10 @@ class MainContainer extends Component {
             <Route path="/register" component={RegisterForm}></Route>
             <Route path="/movies/:id" component={MovieForm}></Route>
             <Route path="/movies/new" component={MovieForm}></Route>
-            <Route path="/movies" component={Movies}></Route>
+            <Route
+              path="/movies"
+              render={(props) => <Movies {...props} user={this.state.user} />}
+            ></Route>
             <Route path="/customers" component={Customers}></Route>
             <Route path="/rentals" component={Rentals}></Route>
             <Route path="/not-found" component={NotFound}></Route>
