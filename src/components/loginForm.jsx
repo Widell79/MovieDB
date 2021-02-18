@@ -1,6 +1,8 @@
 import React from "react";
 import Form from "./form";
 import Joi from "joi-browser";
+import { login } from "../services/authService";
+import { toast } from "react-toastify";
 
 class LoginForm extends Form {
   state = {
@@ -13,8 +15,24 @@ class LoginForm extends Form {
     password: Joi.string().required().label("Password"),
   };
 
-  doSubmit = () => {
-    //Call the server
+  doSubmit = async () => {
+    try {
+      //Call the server
+      //get the response property data
+      const { data } = this.state;
+      //get the json web token, jwy
+      const { data: jwt } = await login(data.username, data.password);
+      //access the localStorage in the browser
+      localStorage.setItem("token", jwt);
+      this.props.history.push("/");
+      toast(`Welcome ${data.username} !`);
+    } catch (exept) {
+      if (exept.response && exept.response.status === 400) {
+        toast.error("Invalid username or password.");
+      } else {
+        toast.error("An unexpected error occurrred.");
+      }
+    }
   };
 
   render() {
