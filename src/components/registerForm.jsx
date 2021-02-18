@@ -1,6 +1,8 @@
 import React from "react";
 import Form from "./form";
 import Joi from "joi-browser";
+import * as userService from "../services/userService";
+import { toast } from "react-toastify";
 
 class RegisterForm extends Form {
   state = {
@@ -14,8 +16,17 @@ class RegisterForm extends Form {
     name: Joi.string().required().label("Name"),
   };
 
-  doSubmit = () => {
-    //Call the server
+  doSubmit = async () => {
+    try {
+      //Call the server
+      await userService.register(this.state.data);
+    } catch (exept) {
+      if (exept.response && exept.response.status === 400) {
+        toast.error("User already registered.");
+      } else {
+        toast.error("An unexpected error occurrred.");
+      }
+    }
   };
 
   render() {
@@ -26,7 +37,7 @@ class RegisterForm extends Form {
           {this.renderInput("username", "Username - (email)")}
           {this.renderInput("password", "Password", "password")}
           {this.renderInput("name", "Name")}
-          {this.renderButton("Login")}
+          {this.renderButton("Register")}
         </form>
       </div>
     );
