@@ -48,7 +48,7 @@ const MoviesTable = ({ movies, onDelete, onSort, sortOrder, column, user }) => {
               <td>{movie.numberInStock}</td>
               <td>{movie.dailyRentalRate}</td>
               <td>
-                {user && (
+                {user && user.isAdmin && (
                   <button
                     onClick={() => onDelete(movie)}
                     className="btn btn-danger btn-sm"
