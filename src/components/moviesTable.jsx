@@ -42,11 +42,7 @@ const MoviesTable = ({ movies, onDelete, onSort, sortOrder, column, user }) => {
           return (
             <tr key={movie._id}>
               <td>
-                {user ? (
-                  <Link to={`/movies/${movie._id}`}>{movie.title}</Link>
-                ) : (
-                  movie.title
-                )}
+                <Link to={`/movies/${movie._id}`}>{movie.title}</Link>
               </td>
               <td>{movie.genre.name}</td>
               <td>{movie.numberInStock}</td>
