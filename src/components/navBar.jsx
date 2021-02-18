@@ -23,12 +23,6 @@ const NavBar = ({ user }) => {
           <NavLink className="nav-item nav-link" to="/movies">
             Movies
           </NavLink>
-          <NavLink className="nav-item nav-link" to="/customers">
-            Customers
-          </NavLink>
-          <NavLink className="nav-item nav-link" to="/rentals">
-            Rentals
-          </NavLink>
 
           {!user && (
             <>
@@ -44,8 +38,8 @@ const NavBar = ({ user }) => {
           {user && (
             <>
               {" "}
-              <NavLink className="nav-item nav-link" to="/profile">
-                {user.name}
+              <NavLink className="nav-item nav-link" to="#">
+                *{user.name}*
               </NavLink>
               <NavLink className="nav-item nav-link" to="/logout">
                 Logout

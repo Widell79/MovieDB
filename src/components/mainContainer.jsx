@@ -3,8 +3,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 import Movies from "./movies";
-import Customers from "./customers";
-import Rentals from "./rentals";
+
 import NotFound from "./notFound";
 import NavBar from "./navBar";
 import MovieForm from "./movieForm";
@@ -41,8 +40,7 @@ class MainContainer extends Component {
               path="/movies"
               render={(props) => <Movies {...props} user={this.state.user} />}
             ></Route>
-            <Route path="/customers" component={Customers}></Route>
-            <Route path="/rentals" component={Rentals}></Route>
+
             <Route path="/not-found" component={NotFound}></Route>
             <Redirect from="/" exact to="/movies" />
             <Redirect to="/not-found" />
