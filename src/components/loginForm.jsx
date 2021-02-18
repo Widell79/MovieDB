@@ -24,8 +24,7 @@ class LoginForm extends Form {
       const { data: jwt } = await login(data.username, data.password);
       //access the localStorage in the browser
       localStorage.setItem("token", jwt);
-      this.props.history.push("/");
-      toast(`Welcome ${data.username} !`);
+      window.location = "/";
     } catch (exept) {
       if (exept.response && exept.response.status === 400) {
         toast.error("Invalid username or password.");
