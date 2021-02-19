@@ -1,7 +1,6 @@
 import http from "./httpService";
-import config from "../config.json";
 
-const apiEndpoint = config.apiURL + "/users";
+const apiEndpoint = "/users";
 
 //userinfo from registerForm
 export function register(user) {
