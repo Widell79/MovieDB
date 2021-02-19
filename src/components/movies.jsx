@@ -106,10 +106,6 @@ class Movies extends Component {
     const { filtered, data: movies } = this.getPagedData();
     const { user } = this.props;
 
-    if (this.state.movies.length === 0) {
-      return <h3>There are no movies in the database.</h3>;
-    }
-
     return (
       <div className="row">
         <div className="col-3">
