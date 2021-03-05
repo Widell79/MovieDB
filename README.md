@@ -1,31 +1,17 @@
-# Getting Started with Create React App
+# MovieDB
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the frontend part of an App that lets you add movies to a database.
+There is a form to create new users and log in to app.
+Only users with admin can delete movies.
 
-## Available Scripts
+## Backend Server
+[The backend Server code](https://github.com/Widell79/MovieDB-api-node)
 
-In the project directory, you can run:
+## Installing
 
-### `npm start`
+To get started developing right away:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* install all project dependencies with `npm install`
+* start the development server with `npm start`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
